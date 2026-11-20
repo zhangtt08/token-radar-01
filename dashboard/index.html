@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="sweep" aria-hidden="true"></div>
+    <div>
+      <h1>TOKEN RADAR</h1>
+      <p class="tag">Pre-token protocols, ranked by what their launch would be worth.</p>
+    </div>
+  </div>
+  <dl class="meta" id="meta"></dl>
+</header>
+<nav class="tabs" id="tabs" aria-label="Views">
+  <button data-view="board" class="on" type="button">Board</button>
+  <button data-view="live" type="button">Live tokens</button>
+  <button data-view="model" type="button">The model</button>
+</nav>
+<section id="view-board" class="view">
+  <div class="controls" id="controls">
+    <label>Search <input id="q" type="search" placeholder="name or slug" autocomplete="off"></label>
+    <label>Category <select id="cat"><option value="">All categories</option></select></label>
+    <label>Chain <select id="chain"><option value="">All chains</option></select></label>
+    <label class="check"><input id="watch" type="checkbox"> Watchlist only</label>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="tablewrap">
+    <table id="board">
+      <thead><tr>
+        <th data-sort="rank" class="num on">#</th>
+        <th data-sort="name">Protocol</th>
+        <th data-sort="category">Category</th>
+        <th data-sort="chains">Chains</th>
+        <th data-sort="tvl_usd" class="num">TVL</th>
+        <th data-sort="change_7d" class="num">7d</th>
+        <th data-sort="age_days" class="num">Age</th>
+        <th data-sort="implied_value_usd" class="num">Implied value</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <p class="hint">Click a row for its detail view and farm plan. Click a column header to sort.</p>
+  <article class="detail" id="detail" hidden></article>
+</section>
+<section id="view-live" class="view" hidden>
+  <p class="lede">These protocols already have a token that trades. The board shows the market's own value for them, never a model's. They are here so the radar's comparables are visible.</p>
+  <div class="tablewrap">
+    <table id="livetable">
+      <thead><tr><th class="num">#</th><th>Protocol</th><th>Category</th><th>Chains</th><th class="num">TVL</th><th class="num">Market cap</th><th class="num">7d</th></tr></thead>
+      <tbody id="liverows"></tbody>
+    </table>
+  </div>
+</section>
+<section id="view-model" class="view" hidden>
+  <div class="modelgrid" id="modelgrid"></div>
+</section>
+<footer class="foot">
+  <p>Implied value is this radar's own claim, priced from the snapshot's live-token comparables. It is not a prediction that a token will launch, or when. Snapshot: <span id="src"></span>. A protocol is shown as pre-token because its DefiLlama record carries no token, never as proof it has none.</p>
+</footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
